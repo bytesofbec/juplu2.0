@@ -1,0 +1,336 @@
+{% load cms_tags menu_tags sekizai_tags %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Juplu - Products</title>
+
+  <!--Styles-->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+  integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"
+  integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g=="
+  crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
+  integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<link rel="stylesheet" href="{% static './css/style.css' %}">
+{% render_block "css" %}
+</head>
+
+<body id="pagetop">
+  {% cms_toolbar %}
+  <nav class="navbar navbar-expand-md navbar-light fixed-top" id="navbar">
+    <div class="container">
+      <a class="navbar-brand" href="http://www.juplu.in/"><img src="../static/img/juplu.png" alt="" width="100px" height="50px"></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-lg-auto">
+           <li class="nav-item">
+            <a class="nav-link" href="http://www.juplu.in/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="/products/">Latest Products</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/contact/">Contact Us</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!--Gallery-->
+
+
+  <section class="services-section" id="services">
+      <div class="container text-center">
+        <div class="content-section-heading text-center">
+          <h2 class="mb-5 section-title" data-aos="fade-up">Products</h2>
+        </div>
+        <div data-aos="fade-up" class="row">
+  <div class="col-md-10 mx-auto">
+    <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="0">
+      <!-- Carousel indicators -->
+      <!--
+          <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+          </ol>
+          -->
+      <!-- Wrapper for carousel items -->
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <div class="row justify-content-center">
+            <div>
+              <div class="card">
+                <img src="../static/img/p23072x3072.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">
+                    Mirch Masala
+                  </h5>
+                  <a href="#" type="button" class="btn btn-primary collapsible">View</a>
+                  <div class="content">
+                    <p>
+                      Makhana also known as foxnuts or lotus seeds, Are a healthy, nutrient & antioxidants-packed alternative to chips & popcorn. They can be relished as an on the go snack too.</p> 
+
+<p>Mirch Masala Makhana,  Roasted is a healthy flavored snack , that is made up of makhana (lotus seeds or fox-nuts). </p>
+
+<p>Makhana, Fox Nuts, or Lotus Seeds are loaded with nutrients and are a good source of protein, calcium, and iron. These are good healthy snacks for kids and adults. </p>
+
+
+<p>Makhanas are packed with the goodness of protein, potassium, phosphorus, carbohydrates, fiber, magnesium, iron, and zinc. These essential nutrients make this munchy a perfect go-to healthy snack. </p>
+
+<ul>
+ <li> An anti-aging enzyme in these seeds is said to help repair damaged proteins. </li> 
+ <li> They are low in calories, making them an ideal snack for weight loss. </li>
+ <li> Makhanas are recommended for diabetics too due to their low glycemic index. </li>
+ <li> They are beneficial to those suffering from high blood pressure, heart diseases, and obesity due to their high magnesium and low sodium content. </li>
+ </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="card">
+                <img src="../static/img/p3072x3072.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">
+                    Mirch Masala
+                  </h5>
+                  <a href="#" type="button" class="btn btn-primary collapsible">View</a>
+                  <div class="content">
+                    <p>
+                      Makhana also known as foxnuts or lotus seeds, Are a healthy, nutrient & antioxidants-packed alternative to chips & popcorn. They can be relished as an on the go snack too.</p> 
+
+<p>Salt & Pepper Makhana,  Roasted is a healthy flavored snack , that is made up of makhana (lotus seeds or fox-nuts). </p>
+
+<p>Makhana, Fox Nuts, or Lotus Seeds are loaded with nutrients and are a good source of protein, calcium, and iron. These are good healthy snacks for kids and adults. </p>
+
+
+<p>Makhanas are packed with the goodness of protein, potassium, phosphorus, carbohydrates, fiber, magnesium, iron, and zinc. These essential nutrients make this munchy a perfect go-to healthy snack. </p>
+
+<ul>
+ <li> An anti-aging enzyme in these seeds is said to help repair damaged proteins. </li> 
+ <li> They are low in calories, making them an ideal snack for weight loss. </li>
+ <li> Makhanas are recommended for diabetics too due to their low glycemic index. </li>
+ <li> They are beneficial to those suffering from high blood pressure, heart diseases, and obesity due to their high magnesium and low sodium content. </li>
+ </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+        {% block content50 %} 
+          {% placeholder "products" %} 
+        {% endblock content50 %}
+      </div>
+    </section>
+
+    <!--Footer-->
+  <!--
+  <footer class="bg-light text-center text-white">
+    <div class="container p-4 pb-0 background">
+      <section data-aos="fade-up" class="mb-4">
+        <a class="btn btn-primary btn-floating m-1" style="background-color: #3b5998;" href="https://www.facebook.com/profile.php?id=100065682000551" role="button"><i
+            class="fa fa-facebook-f"></i></a>
+        <a class="btn btn-primary btn-floating m-1" style="background-color: #55acee;" href="https://twitter.com/Jupluofficial?s=09" role="button"><i
+            class="fa fa-twitter"></i></a>
+        <a class="btn btn-primary btn-floating m-1" style="background-color: #0082ca;" href="https://www.linkedin.com/in/juplugroup" role="button"><i
+            class="fa fa-linkedin"></i>
+        <a class="btn btn-primary btn-floating m-1" style="background-color: #25D366;" href="#!" role="button"><i
+            class="fa fa-whatsapp"></i></a>
+        <a class="btn btn-primary btn-floating m-1" style="background-color: #ac2bac;" href="https://instagram.com/jupluofficial?utm_medium=copy_link" role="button"><i
+            class="fa fa-instagram"></i></a>
+      </section>
+      <a class="btn btn-c btn-floating m-1" href="#!" role="button">
+        Terms & Conditions
+      </a>
+
+      <a class="btn btn-c btn-floating m-1" href="#!" role="button">
+        Privacy Policy
+      </a>
+    </div>
+    <!-- Grid container -->
+
+    <!-- Copyright -->
+    <!--
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+      © 2021 Copyright:
+      <a class="text-white" href="#">examplename</a>
+    </div>
+    <!-- Copyright -->
+    <!--
+  </footer>
+-->
+<!-- footer starts from here -->
+<footer class="footer">
+  <div class="container bottom_border">
+    <div class="row justify-content-left">
+      <div class="col-lg-4 col-md-4 mb-5">
+        <h5 class="headin5_amrc col_white_amrc pt2">Quick links</h5>
+        <!--headin5_amrc-->
+        <ul class="footer_ul_amrc">
+          <li>
+            <a href="https://forms.gle/g3eT2JWHq4oSV5EZ6">
+              <i class="fa fa-shopping-cart"></i> &nbsp;Bulk Order</a>
+          </li>
+          <li>
+            <a href="https://api.whatsapp.com/send?phone=9341460719"
+              ><i class="fa fa-whatsapp"></i> &nbsp;+91-9341460719</a>
+          </li>
+          <li>
+            <a href="mailto:juplu.business@gmail.com"
+              ><i class="fa fa-envelope"></i> &nbsp;juplu.business@gmail.com</a>
+          </li>
+        </ul>
+      </div>
+
+      <!--
+<div class="col-lg-4 col-md-4 text-center mb-5">
+<h5 class="headin5_amrc col_white_amrc pt2">Quick links</h5>
+<ul class="footer_ul_amrc">
+
+</ul>
+</div>
+-->
+    </div>
+  </div>
+
+  <div class="container bottom_border">
+    <div class="row justify-content-center bg">
+      <div class="col-lg-8 col-md-8 text-center">
+        <!--<h5 class="headin5_amrc col_white_amrc pt2">Connect with us</h5>-->
+        <!--
+<ul class="social_footer_ul">
+<li><a href="https://www.facebook.com/profile.php?id=100065682000551" target="_blank"><i class="fab fa-facebook fa-2x"></i></a></li>
+<li><a href="https://twitter.com/Jupluofficial?s=09" target="_blank" ><i class="fab fa-twitter fa-2x"></i></a></li>
+<li><a href="https://www.linkedin.com/in/juplugroup/" target="_blank" ><i class="fab fa-linkedin fa-2x"></i></a></li>
+<li><a href="https://instagram.com/jupluofficial?utm_medium=copy_link" target="_blank" ><i class="fab fa-instagram fa-2x"></i></a></li>
+<li><a href="https://www.youtube.com/channel/UCZ_NaOav-amjDtfXTOjmrHw" target="_blank" ><i class="fab fa-youtube fa-2x"></i></a></li>
+</ul>
+-->
+        <ul class="social_footer_ul">
+          <li>
+            <a
+              href="https://www.facebook.com/profile.php?id=100065682000551"
+              target="_blank"
+              ><i class="fab fa-facebook fa-2x" aria-hidden="true"></i
+            ></a>
+          </li>
+          <li>
+            <a href="https://twitter.com/Jupluofficial?s=09" target="_blank"
+              ><i class="fab fa-twitter fa-2x" aria-hidden="true"></i
+            ></a>
+          </li>
+          <li>
+            <a
+              href="https://www.linkedin.com/in/juplugroup/"
+              target="_blank"
+              ><i class="fab fa-linkedin fa-2x" aria-hidden="true"></i
+            ></a>
+          </li>
+          <li>
+            <a
+              href="https://instagram.com/jupluofficial?utm_medium=copy_link"
+              target="_blank"
+              ><i class="fab fa-instagram fa-2x" aria-hidden="true"></i
+            ></a>
+          </li>
+          <li>
+            <a
+              href="https://www.youtube.com/channel/UCZ_NaOav-amjDtfXTOjmrHw"
+              target="_blank"
+              ><i class="fab fa-youtube fa-2x" aria-hidden="true"></i
+            ></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <ul class="foote_bottom_ul_amrc">
+      <li>
+        <a class="btn btn-c btn-floating m-1" href="https://www.termsandconditionsgenerator.com/live.php?token=HYo4EtmgY6nIvX5jAVZMBlFtQhmeFflP" role="button"
+          >Terms & Conditions</a
+        >
+      </li>
+      <li>
+        <a class="btn btn-c btn-floating m-1" href="https://www.privacypolicygenerator.info/live.php?token=KoVjxDjUwU4lZAV1WABbtajQMIXrqF6x" role="button"
+          >Privacy Policy</a
+        >
+      </li>
+    </ul>
+    <!--foote_bottom_ul_amrc ends here-->
+    <a class="footer-logo" href="http://www.juplu.in/"><img src="../static/img/juplu.png" alt="" width="100px" height="50px"></a>
+        <p class="text-center">
+          Copyright &copy;2021</a>
+        </p>
+    <!--social_footer_ul ends here-->
+  </div>
+</footer>
+
+  <!-- Scroll to top -->
+
+  <a href="#pagetop" class="to-top">
+    <i class="fa fa-angle-double-up"></i>
+  </a>
+
+
+  <!-- JS -->
+  <script>
+var coll = document.getElementsByClassName("collapsible");
+var i;
+
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var content = this.nextElementSibling;
+    if (content.style.display === "block") {
+      content.style.display = "none";
+    } else {
+      content.style.display = "block";
+    }
+  });
+}
+</script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://use.fontawesome.com/c491038b52.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+  </script>
+  <!--<script
+    src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+    integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+    crossorigin="anonymous"
+  ></script>-->
+  <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" crossorigin="anonymous" referrerpolicy="no-referrer">
+  </script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="{% static './js/main.js' %}"></script>
+  <script>
+    AOS.init();
+  </script>
+  {% render_block "js" %}
+</body>
+
+</html>

@@ -1,0 +1,444 @@
+{% load cms_tags menu_tags sekizai_tags %} {% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Juplu - {% page_attribute "page_title" %}</title>
+
+    <!--Styles-->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+      crossorigin="anonymous"
+    />
+    <!--<link
+      href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+      rel="stylesheet"
+      id="bootstrap-css"
+    />-->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"
+      integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
+      integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
+      crossorigin="anonymous"
+    />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <link rel="stylesheet" href="{% static './css/style.css' %}" />
+    {% render_block "css" %}
+  </head>
+
+  <body id="pagetop">
+    {% cms_toolbar %}
+    <nav class="navbar navbar-expand-md navbar-light fixed-top" id="navbar">
+      <div class="container">
+        <a class="navbar-brand" href="http://www.juplu.in/"><img src="../static/img/juplu.png" alt="" width="100px" height="50px"></a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="nav navbar-nav ml-lg-auto">
+            <li class="nav-item">
+              <a class="nav-link active" href="http://www.juplu.in/">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/products/">Latest Products</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/contact/">Contact Us</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div
+      id="carouselExampleIndicators"
+      class="carousel slide banner"
+      data-ride="carousel"
+    >
+      <ol class="carousel-indicators">
+        <li
+          data-target="#carouselExampleIndicators"
+          data-slide-to="0"
+          class="active"
+        ></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+      </ol>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          {% block content %} 
+          {% placeholder "poster1-slider1" %} 
+          {% endblock content %}
+        </div>
+        <div class="carousel-item">
+          {% block content1 %} 
+          {% placeholder "poster1-slider2" %} {% endblock content1 %}
+        </div>
+        <div class="carousel-item">
+          {% block content2 %} 
+          {% placeholder "poster1-slider3" %} 
+          {% endblock content2 %}
+        </div>
+      </div>
+      <a
+        class="carousel-control-prev"
+        href="#carouselExampleIndicators"
+        role="button"
+        data-slide="prev"
+      >
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a
+        class="carousel-control-next"
+        href="#carouselExampleIndicators"
+        role="button"
+        data-slide="next"
+      >
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+
+    <section class="products-section" id="products">
+      <div class="container text-center">
+        <div class="content-section-heading text-center">
+          <h2 class="mb-5 section-title" data-aos="fade-up">Products</h2>
+        </div>
+        
+        {% block content50 %} 
+          {% placeholder "products" %} 
+    {% endblock content50 %}
+                </div>
+              </div>
+              <!-- Carousel controls -->
+              <!--
+            <a class="carousel-control-prev" href="#myCarousel" data-slide="prev">
+              <i class="fa fa-angle-left"></i>
+            </a>
+            <a class="carousel-control-next" href="#myCarousel" data-slide="next">
+              <i class="fa fa-angle-right"></i>
+            </a>
+            --></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!--Services-->
+  <section class="services-section facts" id="services">
+    <div class="container text-center">
+      <div class="content-section-heading">
+        <h4 class="mb-5"><strong>We always choose best for you</strong></h4>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
+          <img src="../static/img/3926x1080facts-1.jpg" alt="" width="209" height="219">
+          <p class="mt-2">
+            <strong>ROASTED NOT FRIED</strong>
+          </p>
+        </div>
+
+        <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
+          <img src="../static/img/3926x1080facts-2.jpg" alt="" width="209" height="219">
+          <p class="mt-2">
+            <strong>NO ARTIFICIAL COLORS & FLAVOURS</strong>
+          </p>
+        </div>
+
+        <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
+          <img src="../static/img/3926x1080facts-3.jpg" alt="" width="209" height="219">
+          <p class="mt-2">
+            <strong>PACKED WITH HYGIENE</strong>
+          </p>
+        </div>
+        <div class="col-lg-3 col-md-6">
+          <img src="../static/img/3926x1080facts-4.jpg" alt="" width="209" height="219">
+          <p class="mt-2">
+            <strong>FAT FREE ZERO CHOLESTEROL</strong>
+          </p
+        </div>
+      </div>
+  </section>
+
+    <div class="img-fluid">
+      {% block content5 %} {% placeholder "poster3" %} {% endblock content5 %} 
+    </div>
+
+    <div
+      id="carouselExampleIndicators"
+      class="carousel slide"
+      data-ride="carousel"
+    >
+      <ol class="carousel-indicators">
+        <li
+          data-target="#carouselExampleIndicators"
+          data-slide-to="0"
+          class="active"
+        ></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+      </ol>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          {% block content6 %} 
+          {% placeholder "poster4-slider1" %} 
+          {% endblock content6 %}
+        </div>
+        <div class="carousel-item">
+          {% block content7 %} 
+          {% placeholder "poster4-slider2" %} 
+          {% endblock content7 %}
+        </div>
+        <div class="carousel-item">
+          {% block content8 %} 
+          {% placeholder "poster4-slider3" %} 
+          {% endblock content8 %}
+        </div>
+      </div>
+      <a
+        class="carousel-control-prev"
+        href="#carouselExampleIndicators"
+        role="button"
+        data-slide="prev"
+      >
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a
+        class="carousel-control-next"
+        href="#carouselExampleIndicators"
+        role="button"
+        data-slide="next"
+      >
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+
+    <div class="gif-section">
+      <img class="img-fluid" src="../static/img/NO.gif" alt="">
+    </div>
+
+    <div class="video-section">
+      <iframe
+        width="560"
+        height="315"
+        src="https://www.youtube.com/embed/2IS-Ui7yWfM"
+        title="YouTube video player"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+      ></iframe>
+    </div>
+
+    <div data-aos="fade-up" class="form4 top">
+      <div class="container">
+        <div class="content-section-heading text-center">
+          <h3 data-aos="fade-up" class="mb-5 section-title">
+            Get in Touch with Us!
+          </h3>
+        </div>
+        <div class="row justify-content-center">
+          <div class="col-md-7 col-md-offset-2">
+            <div class="form-bg">
+              <form
+                class="form"
+                action="https://formsubmit.co/juplu.business@gmail.com"
+                method="POST"
+              >
+                <input
+                  type="hidden"
+                  name="_subject"
+                  value="New email"
+                  required
+                />
+                <div class="form-group">
+                  <label class="sr-only">Name</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    required=""
+                    id="nameNine"
+                    type="text" name="name"
+                    placeholder="Your Name"
+                  />
+                </div>
+                <div class="form-group">
+                  <label class="sr-only">Email</label>
+                  <input
+                    type="email"
+                    class="form-control"
+                    required=""
+                    id="emailNine"
+                    name="email" placeholder="Email address"
+                    placeholder="Email Address"
+                  />
+                </div>
+                <div class="form-group">
+                  <label class="sr-only">Message</label>
+                  <input
+                    class="form-control"
+                    required=""
+                    rows="7"
+                    id="messageNine"
+                    type="text" name="message" placeholder="write your message"
+                  ></input>
+                </div>
+                <button type="submit" class="btn text-center btn-blue">
+                  Send Message
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- footer starts from here -->
+    <footer class="footer">
+      <div class="container bottom_border">
+        <div class="row justify-content-left">
+          <div class="col-lg-4 col-md-4 mb-5">
+            <h5 class="headin5_amrc col_white_amrc pt2">Quick links</h5>
+            <!--headin5_amrc-->
+            <ul class="footer_ul_amrc">
+              <li>
+                <a href="https://forms.gle/g3eT2JWHq4oSV5EZ6">
+                  <i class="fa fa-shopping-cart"></i> &nbsp;Bulk Order</a>
+              </li>
+              <li>
+                <a href="https://api.whatsapp.com/send?phone=9341460719"
+                  ><i class="fa fa-whatsapp"></i> &nbsp;+91-9341460719</a>
+              </li>
+              <li>
+                <a href="mailto:juplu.business@gmail.com"
+                  ><i class="fa fa-envelope"></i> &nbsp;juplu.business@gmail.com</a>
+              </li>
+            </ul>
+          </div>
+          
+        </div>
+      </div>
+
+      <div class="container bottom_border">
+        <div class="row justify-content-center bg">
+          <div class="col-lg-8 col-md-8 text-center">
+            <ul class="social_footer_ul">
+              <li>
+                <a
+                  href="https://www.facebook.com/profile.php?id=100065682000551"
+                  target="_blank"
+                  ><i class="fab fa-facebook fa-2x" aria-hidden="true"></i
+                ></a>
+              </li>
+              <li>
+                <a href="https://twitter.com/Jupluofficial?s=09" target="_blank"
+                  ><i class="fab fa-twitter fa-2x" aria-hidden="true"></i
+                ></a>
+              </li>
+              <li>
+                <a
+                  href="https://www.linkedin.com/in/juplugroup/"
+                  target="_blank"
+                  ><i class="fab fa-linkedin fa-2x" aria-hidden="true"></i
+                ></a>
+              </li>
+              <li>
+                <a
+                  href="https://instagram.com/jupluofficial?utm_medium=copy_link"
+                  target="_blank"
+                  ><i class="fab fa-instagram fa-2x" aria-hidden="true"></i
+                ></a>
+              </li>
+              <li>
+                <a
+                  href="https://www.youtube.com/channel/UCZ_NaOav-amjDtfXTOjmrHw"
+                  target="_blank"
+                  ><i class="fab fa-youtube fa-2x" aria-hidden="true"></i
+                ></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <ul class="foote_bottom_ul_amrc">
+          <li>
+            <a class="btn btn-c btn-floating m-1" href="https://www.termsandconditionsgenerator.com/live.php?token=HYo4EtmgY6nIvX5jAVZMBlFtQhmeFflP" role="button"
+              >Terms & Conditions</a
+            >
+          </li>
+          <li>
+            <a class="btn btn-c btn-floating m-1" href="https://www.privacypolicygenerator.info/live.php?token=KoVjxDjUwU4lZAV1WABbtajQMIXrqF6x" role="button"
+              >Privacy Policy</a
+            >
+          </li>
+        </ul>
+        <!--foote_bottom_ul_amrc ends here-->
+        <a class="footer-logo" href="http://www.juplu.in/"><img src="../static/img/juplu.png" alt="" width="100px" height="50px"></a>
+        <p class="text-center">
+          Copyright &copy;2021</a>
+        </p>
+        <!--social_footer_ul ends here-->
+      </div>
+    </footer>
+
+    <!-- Scroll to top -->
+
+    <a href="#pagetop" class="to-top">
+      <i class="fa fa-angle-double-up"></i>
+    </a>
+
+    <!-- JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <!--<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>-->
+    <script src="https://use.fontawesome.com/c491038b52.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+    <!--<script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+      integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+      crossorigin="anonymous"
+    ></script>-->
+    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    </script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="{% static './js/main.js' %}"></script>
+    <script>
+      AOS.init();
+    </script>
+    {% render_block "js" %}
+  </body>
+</html>
