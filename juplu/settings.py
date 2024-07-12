@@ -244,12 +244,12 @@ CMS_PLACEHOLDER_CONF = {}
 DATABASES = {
     'default': {
         'CONN_MAX_AGE': 0,
-        'ENGINE': 'django.db.backends.sqlite3',
-        'HOST': 'localhost',
-        'NAME': 'project.db',
-        'PASSWORD': '',
-        'PORT': '',
-        'USER': ''
+        'ENGINE': 'django.db.backends.postgresql',
+        'HOST': 'roundhouse.proxy.rlwy.net',
+        'NAME': 'railway',
+        'PASSWORD': 'HYLSPyxiNMAnmBHUOOFnWsDXaPyXbwLx',
+        'PORT': '32163',
+        'USER': 'postgres'
     }
 }
 
