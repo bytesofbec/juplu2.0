@@ -1,47 +1,47 @@
 // #DROPZONE#
 // This script implements the dropzone settings
-/* globals Dropzone, django */
 'use strict';
 
-// as of Django 2.x we need to check where jQuery is
-var djQuery = window.$;
-
-if (django.jQuery) {
-    djQuery = django.jQuery;
-}
+import Dropzone from 'dropzone';
 
 if (Dropzone) {
     Dropzone.autoDiscover = false;
 }
 
-/* globals Dropzone, django */
-djQuery(function ($) {
-    var dropzoneTemplateSelector = '.js-filer-dropzone-template';
-    var previewImageSelector = '.js-img-preview';
-    var dropzoneSelector = '.js-filer-dropzone';
-    var dropzones = $(dropzoneSelector);
-    var messageSelector = '.js-filer-dropzone-message';
-    var lookupButtonSelector = '.js-related-lookup';
-    var progressSelector = '.js-filer-dropzone-progress';
-    var previewImageWrapperSelector = '.js-img-wrapper';
-    var filerClearerSelector = '.filerClearer';
-    var fileChooseSelector = '.js-file-selector';
-    var fileIdInputSelector = '.vForeignKeyRawIdAdminField';
-    var dragHoverClass = 'dz-drag-hover';
-    var hiddenClass = 'hidden';
-    var mobileClass = 'filer-dropzone-mobile';
-    var objectAttachedClass = 'js-object-attached';
-    // var dataMaxFileSize = 'max-file-size';
-    var minWidth = 500;
-    var checkMinWidth = function (element) {
-        element.toggleClass(mobileClass, element.width() < minWidth);
+document.addEventListener('DOMContentLoaded', () => {
+    const previewImageSelector = '.js-img-preview';
+    const dropzoneSelector = '.js-filer-dropzone';
+    const dropzones = document.querySelectorAll(dropzoneSelector);
+    const messageSelector = '.js-filer-dropzone-message';
+    const lookupButtonSelector = '.js-related-lookup';
+    const editButtonSelector = '.js-related-edit';
+    const dropzoneTemplate = '.js-filer-dropzone-template';
+    const progressSelector = '.js-filer-dropzone-progress';
+    const previewImageWrapperSelector = '.js-img-wrapper';
+    const filerClearerSelector = '.filerClearer';
+    const fileChooseSelector = '.js-file-selector';
+    const fileIdInputSelector = '.vForeignKeyRawIdAdminField';
+    const dragHoverClass = 'dz-drag-hover';
+    const hiddenClass = 'hidden';
+    const mobileClass = 'filer-dropzone-mobile';
+    const objectAttachedClass = 'js-object-attached';
+    const minWidth = 500;
+
+    const checkMinWidth = (element) => {
+        const width = element.offsetWidth;
+        if (width < minWidth) {
+            element.classList.add(mobileClass);
+        } else {
+            element.classList.remove(mobileClass);
+        }
     };
-    var showError = function (message) {
+
+    const showError = (message) => {
         try {
             window.parent.CMS.API.Messages.open({
                 message: message
             });
-        } catch (e) {
+        } catch {
             if (window.filerShowError) {
                 window.filerShowError(message);
             } else {
@@ -50,100 +50,144 @@ djQuery(function ($) {
         }
     };
 
-    var createDropzone = function () {
-        var dropzone = $(this);
-        var dropzoneUrl = dropzone.data('url');
-        var inputId = dropzone.find(fileIdInputSelector);
-        var isImage = inputId.is('[name="image"]');
-        var lookupButton = dropzone.find(lookupButtonSelector);
-        var message = dropzone.find(messageSelector);
-        var clearButton = dropzone.find(filerClearerSelector);
-        var fileChoose = dropzone.find(fileChooseSelector);
+    const createDropzone = function (dropzone) {
+        const dropzoneUrl = dropzone.dataset.url;
+        const inputId = dropzone.querySelector(fileIdInputSelector);
+        const isImage = inputId?.getAttribute('name') === 'image';
+        const lookupButton = dropzone.querySelector(lookupButtonSelector);
+        const editButton = dropzone.querySelector(editButtonSelector);
+        const message = dropzone.querySelector(messageSelector);
+        const clearButton = dropzone.querySelector(filerClearerSelector);
+        const fileChoose = dropzone.querySelector(fileChooseSelector);
 
-        if (this.dropzone) {
+        if (dropzone.dropzone) {
             return;
         }
 
-        $(window).on('resize', function () {
+        const resizeHandler = () => {
             checkMinWidth(dropzone);
-        });
+        };
+        window.addEventListener('resize', resizeHandler);
 
-        new Dropzone(this, {
+        new Dropzone(dropzone, {
             url: dropzoneUrl,
             paramName: 'file',
             maxFiles: 1,
-            // for now disabled as we don't have the correct file size limit
-            // maxFilesize: dropzone.data(dataMaxFileSize) || 20, // MB
-            previewTemplate: $(dropzoneTemplateSelector).html(),
+            maxFilesize: dropzone.dataset.maxFilesize,
+            previewTemplate: document.querySelector(dropzoneTemplate).innerHTML || '',
             clickable: false,
             addRemoveLinks: false,
             init: function () {
                 checkMinWidth(dropzone);
-                this.on('removedfile', function () {
-                    fileChoose.show();
-                    dropzone.removeClass(objectAttachedClass);
+
+                this.on('removedfile', () => {
+                    if (fileChoose) {
+                        fileChoose.style.display = '';
+                    }
+                    dropzone.classList.remove(objectAttachedClass);
                     this.removeAllFiles();
-                    clearButton.trigger('click');
+                    clearButton?.click();
                 });
-                $('img', this.element).on('dragstart', function (event) {
-                    event.preventDefault();
+
+                const images = this.element.querySelectorAll('img');
+                images.forEach((img) => {
+                    img.addEventListener('dragstart', (event) => {
+                        event.preventDefault();
+                    });
                 });
-                clearButton.on('click', function () {
-                    dropzone.removeClass(objectAttachedClass);
-                    inputId.trigger('change');
-                });
+
+                if (clearButton) {
+                    clearButton.addEventListener('click', () => {
+                        dropzone.classList.remove(objectAttachedClass);
+                        // const changeEvent = new Event('change', { bubbles: true });
+                        // inputId?.dispatchEvent(changeEvent);
+                    });
+                }
             },
             maxfilesexceeded: function () {
                 this.removeAllFiles(true);
             },
             drop: function () {
                 this.removeAllFiles(true);
-                fileChoose.hide();
-                lookupButton.addClass('related-lookup-change');
-                message.addClass(hiddenClass);
-                dropzone.removeClass(dragHoverClass);
-                dropzone.addClass(objectAttachedClass);
+                clearButton?.click();
+                const progressEl = dropzone.querySelector(progressSelector);
+                if (progressEl) {
+                    progressEl.classList.remove(hiddenClass);
+                }
+                if (fileChoose) {
+                    fileChoose.style.display = 'block';
+                }
+                lookupButton?.classList.add('related-lookup-change');
+                editButton?.classList.add('related-lookup-change');
+                message?.classList.add(hiddenClass);
+                dropzone.classList.remove(dragHoverClass);
+                dropzone.classList.add(objectAttachedClass);
             },
             success: function (file, response) {
-                $(progressSelector).addClass(hiddenClass);
+                const progressEl = dropzone.querySelector(progressSelector);
+                if (progressEl) {
+                    progressEl.classList.add(hiddenClass);
+                }
+
                 if (file && file.status === 'success' && response) {
-                    if (response.file_id) {
-                        inputId.val(response.file_id);
-                        inputId.trigger('change');
+                    if (response.file_id && inputId) {
+                        inputId.value = response.file_id;
+                        const changeEvent = new Event('change', { bubbles: true });
+                        inputId.dispatchEvent(changeEvent);
                     }
-                    if (response.thumbnail_180) {
-                        if (isImage) {
-                            $(previewImageSelector).css({
-                                'background-image': 'url(' + response.thumbnail_180 + ')'
-                            });
-                            $(previewImageWrapperSelector).removeClass(hiddenClass);
+                    if (response.thumbnail_180 && isImage) {
+                        const previewImg = dropzone.querySelector(previewImageSelector);
+                        if (previewImg) {
+                            previewImg.style.backgroundImage = `url(${response.thumbnail_180})`;
+                        }
+                        const wrapper = dropzone.querySelector(previewImageWrapperSelector);
+                        if (wrapper) {
+                            wrapper.classList.remove(hiddenClass);
                         }
                     }
                 } else {
                     if (response && response.error) {
-                        showError(file.name + ': ' + response.error);
+                        showError(`${file.name}: ${response.error}`);
                     }
                     this.removeAllFiles(true);
                 }
 
-                $('img', this.element).on('dragstart', function (event) {
-                    event.preventDefault();
+                const images = this.element.querySelectorAll('img');
+                images.forEach((img) => {
+                    img.addEventListener('dragstart', (event) => {
+                        event.preventDefault();
+                    });
                 });
             },
-            error: function (file, response) {
-                showError(file.name + ': ' + response.error);
+            error: function (file, msg, response) {
+                if (response && response.error) {
+                    msg += ` ; ${response.error}`;
+                }
+                showError(`${file.name}: ${msg}`);
                 this.removeAllFiles(true);
             },
             reset: function () {
                 if (isImage) {
-                    $(previewImageWrapperSelector).addClass(hiddenClass);
-                    $(previewImageSelector).css({'background-image': 'none'});
+                    const wrapper = dropzone.querySelector(previewImageWrapperSelector);
+                    if (wrapper) {
+                        wrapper.classList.add(hiddenClass);
+                    }
+                    const previewImg = dropzone.querySelector(previewImageSelector);
+                    if (previewImg) {
+                        previewImg.style.backgroundImage = 'none';
+                    }
                 }
-                dropzone.removeClass(objectAttachedClass);
-                inputId.val('');
-                lookupButton.removeClass('related-lookup-change');
-                message.removeClass(hiddenClass);
-                inputId.trigger('change');
+                dropzone.classList.remove(objectAttachedClass);
+                if (inputId) {
+                    inputId.value = '';
+                }
+                lookupButton?.classList.remove('related-lookup-change');
+                editButton?.classList.remove('related-lookup-change');
+                message?.classList.remove(hiddenClass);
+                if (inputId) {
+                    const changeEvent = new Event('change', { bubbles: true });
+                    inputId.dispatchEvent(changeEvent);
+                }
             }
         });
     };
@@ -153,19 +197,38 @@ djQuery(function ($) {
             window.filerDropzoneInitialized = true;
             Dropzone.autoDiscover = false;
         }
-        dropzones.each(createDropzone);
-        // window.__admin_utc_offset__ is used as canary to detect Django 1.8
-        // There is no way to feature detect the new behavior implemented in Django 1.9
-        if (!window.__admin_utc_offset__) {
-            $(document).on('formset:added', function (ev, row) {
-                var dropzones = $(row).find(dropzoneSelector);
-                dropzones.each(createDropzone);
-            });
-        } else {
-            $('.add-row a').on('click', function () {
-                var dropzones = $(dropzoneSelector);
-                dropzones.each(createDropzone);
-            });
-        }
+        dropzones.forEach(createDropzone);
+
+        // Handle initialization of the dropzone on dynamic formsets (i.e. Django admin inlines)
+        document.addEventListener('formset:added', (event) => {
+            let dropzones;
+            let rowIdx;
+            let row;
+
+            if (event.detail && event.detail.formsetName) {
+                /*
+                    Django 4.1 changed the event type being fired when adding
+                    a new formset from a jQuery to a vanilla JavaScript event.
+                    https://docs.djangoproject.com/en/4.1/ref/contrib/admin/javascript/
+
+                    In this case we find the newly added row and initialize the
+                    dropzone on any dropzoneSelector on that row.
+                */
+
+                rowIdx = parseInt(
+                    document.getElementById(
+                        `id_${event.detail.formsetName}-TOTAL_FORMS`
+                    ).value, 10
+                ) - 1;
+                row = document.getElementById(`${event.detail.formsetName}-${rowIdx}`);
+                dropzones = row?.querySelectorAll(dropzoneSelector) || [];
+            } else {
+                // Fallback for older jQuery event format
+                row = event.target;
+                dropzones = row?.querySelectorAll(dropzoneSelector) || [];
+            }
+
+            dropzones?.forEach(createDropzone);
+        });
     }
 });

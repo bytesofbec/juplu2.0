@@ -241,16 +241,13 @@ CMS_PERMISSION = True
 
 CMS_PLACEHOLDER_CONF = {}
 
+import dj_database_url
+
 DATABASES = {
-    'default': {
-        'CONN_MAX_AGE': 0,
-        'ENGINE': 'django.db.backends.postgresql',
-        'HOST': 'roundhouse.proxy.rlwy.net',
-        'NAME': 'railway',
-        'PASSWORD': 'HYLSPyxiNMAnmBHUOOFnWsDXaPyXbwLx',
-        'PORT': '32163',
-        'USER': 'postgres'
-    }
+    'default': dj_database_url.config(
+        default=f"sqlite:///{os.path.join(BASE_DIR, 'project.db')}",
+        conn_max_age=0,
+    )
 }
 
 THUMBNAIL_PROCESSORS = (
