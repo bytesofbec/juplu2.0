@@ -1,0 +1,35 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "public/img"
+public_folder: "/img"
+
+collections:
+  - name: "products"
+    label: "Products"
+    folder: "src/content/products"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Subtitle", name: "subtitle", widget: "string", default: "Roasted Makhana" }
+      - { label: "Image", name: "image", widget: "image" }
+      - { label: "Short Description", name: "shortDescription", widget: "text" }
+      - { label: "Body", name: "body", widget: "markdown" }
+      - { label: "Benefits", name: "benefits", widget: "list", field: { label: "Benefit", widget: "string" } }
+      - { label: "Ingredients", name: "ingredients", widget: "string" }
+      - { label: "Nutritional Highlights", name: "nutritionalHighlights", widget: "list", field: { label: "Highlight", widget: "string" } }
+      - { label: "Featured", name: "featured", widget: "boolean", default: true }
+
+  - name: "team"
+    label: "Team Members"
+    folder: "src/content/team"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Name", name: "name", widget: "string" }
+      - { label: "Role", name: "role", widget: "string" }
+      - { label: "Image", name: "image", widget: "image" }
+      - { label: "Bio", name: "bio", widget: "string", required: false }
+

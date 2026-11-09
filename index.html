@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/img/juplu.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Juplu - Healthy & Nutrient Rich Roasted Makhana Snacks</title>
+    <meta name="description" content="Juplu provides delicious, nutrient-rich roasted Makhana (foxnuts/lotus seeds) snacks with traditional Indian aromatic spices. Roasted not fried, fat-free, zero cholesterol." />
+    
+    <!-- Open Graph / Social Sharing -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Juplu - Healthy & Nutrient Rich Makhana Snacks" />
+    <meta property="og:description" content="Delicious and nutritious snacks made from handpicked water lily seeds (Makhana) with a traditional blend of aromatic Indian spices." />
+    <meta property="og:image" content="/img/juplu.png" />
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Netlify Identity Widget for Decap CMS -->
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  </head>
+  <body class="bg-juplu-mint text-juplu-dark antialiased min-h-screen flex flex-col font-sans">
+    <div id="root"></div>
+    
+    <!-- Hidden static form for Netlify Forms build-time discovery -->
+    <form name="contact" netlify netlify-honeypot="bot-field" hidden>
+      <input type="text" name="name" />
+      <input type="email" name="email" />
+      <input type="tel" name="phone" />
+      <input type="text" name="subject" />
+      <textarea name="message"></textarea>
+    </form>
+
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+
