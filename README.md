@@ -152,3 +152,4 @@ Netlify handles all contact form submissions automatically:
 2. Under **Registration Preferences**, choose whether registration is open or invite-only.
 3. Under **Services → Git Gateway**, click **Enable Git Gateway**.
 4. Visit `https://your-site.netlify.app/admin/` to log in and visually manage your products and team members.
+
